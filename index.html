@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李嘉稷 - 人工智能与算法专家</title>
+    
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 引入 Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 引入 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- 引入 Swiper.js 用于图片轮播 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <style>
+        :root {
+            --highlight-color: #FF6900; /* 小米橙作为高亮色 */
+        }
+        
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .tech-gradient {
+            background: linear-gradient(135deg, rgba(255, 105, 0, 0.7), rgba(255, 105, 0, 0.3));
+        }
+        
+        .main-card {
+            background-color: #1a1a1a;
+            border-radius: 1rem;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .mini-card {
+            background-color: #222222;
+            border-radius: 0.75rem;
+            border: 1px solid #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .highlight-text {
+            color: var(--highlight-color);
+        }
+        
+        .profile-image {
+            border: 3px solid var(--highlight-color);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 25%;
+            height: 50%;
+            width: 4px;
+            background-color: var(--highlight-color);
+            border-radius: 2px;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--highlight-color);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-16 max-w-6xl">
+        <!-- 主标题部分 -->
+        <div class="main-card p-8 mb-12">
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-between">
+                <div>
+                    <h1 class="text-6xl font-bold mb-2">李嘉稷</h1>
+                    <h2 class="text-xl text-gray-400 font-semibold mb-4">AI Algorithm Expert & Co-founder</h2>
+                    <p class="text-xl mb-6">人工智能与算法专家 | 物自体科技联合创始人</p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-gray-400 mr-2"></i>
+                            <span>jetcodery@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gray-400 mr-2"></i>
+                            <span>18515068708</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
+                            <span>北京市海淀区</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-user text-gray-400 mr-2"></i>
+                            <span>民族：汉</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-flag text-gray-400 mr-2"></i>
+                            <span>政治面貌：团员</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-ruler-vertical text-gray-400 mr-2"></i>
+                            <span>身高：176cm</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative h-48 w-48 md:h-64 md:w-64 overflow-hidden rounded-full profile-image mb-6 md:mb-0">
+                    <div class="flex items-center justify-center h-full bg-gradient-to-br from-gray-700 to-gray-900 text-5xl font-bold">
+                        <span class="highlight-text">李</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 基本信息卡片 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-id-card highlight-text mr-2"></i>基本信息</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-6">
+                <div class="mini-card p-6">
+                    <i class="fas fa-graduation-cap text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-lg font-bold">学历</h3>
+                    <p class="text-2xl font-bold highlight-text mt-2">硕士</p>
+                    <p class="text-sm text-gray-400">北京理工大学 2019届</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-university text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-lg font-bold">毕业院校</h3>
+                    <p class="text-2xl font-bold highlight-text mt-2">北京理工大学</p>
+                    <p class="text-sm text-gray-400">信息院 2019届</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-birthday-cake text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-lg font-bold">出生日期</h3>
+                    <p class="text-2xl font-bold highlight-text mt-2">1994.10.21</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-home text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-lg font-bold">联系地址</h3>
+                    <p class="text-gray-300 mt-2">北京市海淀区北京理工大学-2019届信息院</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 核心能力概览 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-star highlight-text mr-2"></i>核心能力概览</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-6">
+                <div class="mini-card p-6">
+                    <i class="fas fa-brain text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-3xl font-bold mb-1">AI算法</h3>
+                    <p class="text-xs text-gray-400 mb-2">Deep Learning & AI</p>
+                    <p class="text-sm text-gray-300">深度学习、计算机视觉、OCR、强化学习、大模型训练</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-cogs text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-3xl font-bold mb-1">决策优化</h3>
+                    <p class="text-xs text-gray-400 mb-2">Decision Optimization</p>
+                    <p class="text-sm text-gray-300">智能供应链算法、装箱算法、决策优化</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-paint-brush text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-3xl font-bold mb-1">创意AI</h3>
+                    <p class="text-xs text-gray-400 mb-2">Creative AI</p>
+                    <p class="text-sm text-gray-300">内容生成、图文一键创作、智能营销策略</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-project-diagram text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-3xl font-bold mb-1">架构设计</h3>
+                    <p class="text-xs text-gray-400 mb-2">System Architecture</p>
+                    <p class="text-sm text-gray-300">全栈开发、系统架构、Git、Docker</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 职业经历 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-briefcase highlight-text mr-2"></i>职业经历</h2>
+            
+            <div class="space-y-8 mt-6">
+                <div class="mini-card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold highlight-text">物自体（上海）科技有限公司</h3>
+                            <p class="text-lg font-semibold mt-1">合伙人、联合创始人</p>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-2 md:mt-0">2024.4 - 2025.5</p>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">汇报上级：裴沵思（前第四范式总裁、前SAP中国区副总裁，现为"物自体（上海）科技有限公司"CEO、创始人）</p>
+                    <p class="text-sm text-gray-300">作为合伙人参与公司创立与业务发展，专注AI技术应用与产品创新</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold highlight-text">第四范式（北京）技术有限公司</h3>
+                            <p class="text-lg font-semibold mt-1">资深算法研究员</p>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-2 md:mt-0">2020.1 - 2024.3</p>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">汇报上级：涂威威（前第四范式副总裁、主任科学家，现为"人工生产力（北京）科技有限公司"创始人）</p>
+                    <p class="text-sm text-gray-300">主导AI决策算法研发，智能供应链及装箱系统算法突破，获多项专利</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold highlight-text">第四范式（北京）技术有限公司</h3>
+                            <p class="text-lg font-semibold mt-1">算法工程师</p>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-2 md:mt-0">2018.5 - 2020.1</p>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">汇报上级：黄缨宁（前第四范式AIOS总经理，现为"北京贝陪科技有限公司"创始人、CEO）</p>
+                    <p class="text-sm text-gray-300">参与大模型训练基础工作，负责BERT模型复现与改进，在下游任务中表现超原论文</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 项目经验 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-laptop-code highlight-text mr-2"></i>项目经验</h2>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4">新媒体AI智能化</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mt-4">
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">1000+</h4>
+                        <p class="text-xs text-gray-400 mb-2">Content Processing</p>
+                        <p class="text-sm text-gray-300">与Wendy在Indigo合作时期：开发信息整合与监控平台，内容打标效率达每分钟千篇（小红书笔记）</p>
+                    </div>
+                    
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">Muse</h4>
+                        <p class="text-xs text-gray-400 mb-2">Creative Platform</p>
+                        <p class="text-sm text-gray-300">主导开发智能内容平台，集素材管理、工作流管理、图文一键生成于一体</p>
+                    </div>
+                    
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">60%+</h4>
+                        <p class="text-xs text-gray-400 mb-2">Revenue Contribution</p>
+                        <p class="text-sm text-gray-300">Muse相关产品生态营收占公司总营收比例超60%</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">灵感卡片</h4>
+                        <p class="text-xs text-gray-400 mb-2">Inspiration Cards</p>
+                        <p class="text-sm text-gray-300">开发Muse平台产品生态的灵感卡片功能，助力创意生成</p>
+                    </div>
+                    
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">内容套件</h4>
+                        <p class="text-xs text-gray-400 mb-2">Content Suite</p>
+                        <p class="text-sm text-gray-300">主导开发Muse内容套件，配置comfyUI、dify、飞书为外围套件，接入批量产出</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 grid grid-cols-1 gap-4">
+                    <div class="mini-card p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold">Muse平台链接</h3>
+                            <i class="fas fa-link text-xl highlight-text"></i>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <a href="https://muse.woyaozanzan.com/" target="_blank" class="block p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all">
+                                <i class="fas fa-external-link-alt highlight-text mr-2"></i>
+                                <span>Muse平台</span>
+                                <p class="text-xs text-gray-400 mt-1">https://muse.woyaozanzan.com/</p>
+                            </a>
+                            <a href="http://118.25.174.192:2025/task" target="_blank" class="block p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all">
+                                <i class="fas fa-external-link-alt highlight-text mr-2"></i>
+                                <span>Muse内容套件</span>
+                                <p class="text-xs text-gray-400 mt-1">http://118.25.174.192:2025/task</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl font-bold mb-4">AI决策算法</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">智能供应链</h4>
+                        <p class="text-xs text-gray-400 mb-2">Supply Chain AI</p>
+                        <p class="text-sm text-gray-300">2023年主导开发智能供应链系统，性能超过市场主流商业软件</p>
+                    </div>
+                    
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">智能装箱</h4>
+                        <p class="text-xs text-gray-400 mb-2">Intelligent Packing</p>
+                        <p class="text-sm text-gray-300">主导开发智能装箱系统，生产环境测试指标超过主流商业闭源软件"装满满"</p>
+                    </div>
+                    
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">BERT</h4>
+                        <p class="text-xs text-gray-400 mb-2">Large Model</p>
+                        <p class="text-sm text-gray-300">2019.7 国内第一批参与大模型训练的科研人员，模型性能超越原论文</p>
+                    </div>
+                    
+                    <div class="mini-card p-6">
+                        <h4 class="text-3xl font-bold mb-1 highlight-text">全栈能力</h4>
+                        <p class="text-xs text-gray-400 mb-2">Full Stack</p>
+                        <p class="text-sm text-gray-300">曾担任架构师、算法工程总监，具备全栈开发能力</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 荣誉成就 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-trophy highlight-text mr-2"></i>荣誉成就</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold mb-4">竞赛奖项</h3>
+                    <div class="space-y-4">
+                        <div class="mini-card p-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-medal text-2xl highlight-text mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="text-xl font-bold">天池-全国供应链算法大赛</h4>
+                                    <p class="text-sm text-gray-400">2022.1</p>
+                                    <p class="text-sm text-gray-300 mt-2">初赛冠军、复赛冠军、决赛冠军<br>团队队长，90%以上代码核心贡献者</p>
+                                    <a href="https://tianchi.aliyun.com/competition/entrance/531934/rankingList" target="_blank" class="text-sm highlight-text hover:underline mt-1 inline-block">查看详情 <i class="fas fa-external-link-alt text-xs"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mini-card p-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-award text-2xl highlight-text mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="text-xl font-bold">HSBC亚太区总裁AI专用基金项目</h4>
+                                    <p class="text-sm text-gray-400">2020.7</p>
+                                    <p class="text-sm text-gray-300 mt-2">击败谷歌/达观/合合获得第一名</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mini-card p-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-star text-2xl highlight-text mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="text-xl font-bold">第四范式-全公司年度个人特别奖</h4>
+                                    <p class="text-sm text-gray-400">2021.12</p>
+                                    <p class="text-sm text-gray-300 mt-2">公司级个人技术贡献荣誉</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold mb-4">发明专利</h3>
+                    <div class="space-y-4">
+                        <div class="mini-card p-6">
+                            <i class="fas fa-lightbulb text-2xl highlight-text mb-3"></i>
+                            <h4 class="text-lg font-semibold">装箱方法、装置、设备及存储介质</h4>
+                            <p class="text-sm text-gray-400">申请号：CN202311109104.1</p>
+                        </div>
+                        
+                        <div class="mini-card p-6">
+                            <i class="fas fa-lightbulb text-2xl highlight-text mb-3"></i>
+                            <h4 class="text-lg font-semibold">供应链补货规划方法、装置、设备、介质和产品</h4>
+                            <p class="text-sm text-gray-400">申请号：CN202310103421.6</p>
+                        </div>
+                        
+                        <div class="mini-card p-6">
+                            <i class="fas fa-lightbulb text-2xl highlight-text mb-3"></i>
+                            <h4 class="text-lg font-semibold">智能供应链补货方法、系统、电子设备及存储介质</h4>
+                            <p class="text-sm text-gray-400">申请号：CN202210891453.2</p>
+                        </div>
+                        
+                        <div class="mini-card p-6">
+                            <i class="fas fa-lightbulb text-2xl highlight-text mb-3"></i>
+                            <h4 class="text-lg font-semibold">基于多智能体和即时信息流编辑与交互的AI营销协作平台</h4>
+                            <p class="text-sm text-gray-400">专利状态：在申中</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作品展示轮播图 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-images highlight-text mr-2"></i>作品展示</h2>
+            
+            <div class="mt-6">
+                <!-- Swiper 轮播图 -->
+                <div class="swiper mySwiper h-96">
+                    <div class="swiper-wrapper">
+                        <!-- 使用同一张图片创建5个轮播项 -->
+                        <div class="swiper-slide">
+                            <img src="https://tir6yppgipg.feishu.cn/file/S3ICbbs7fo5YiMxSus4c9yOnnmb?from=from_copylink" alt="作品展示1" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4">
+                                <h3 class="text-xl font-bold">奖品展示</h3>
+                                <p class="text-sm text-gray-300">天池比赛获奖纪念</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://tir6yppgipg.feishu.cn/file/S3ICbbs7fo5YiMxSus4c9yOnnmb?from=from_copylink" alt="作品展示2" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4">
+                                <h3 class="text-xl font-bold">Muse平台界面</h3>
+                                <p class="text-sm text-gray-300">智能内容创作平台</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://tir6yppgipg.feishu.cn/file/S3ICbbs7fo5YiMxSus4c9yOnnmb?from=from_copylink" alt="作品展示3" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4">
+                                <h3 class="text-xl font-bold">供应链算法可视化</h3>
+                                <p class="text-sm text-gray-300">智能决策系统展示</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://tir6yppgipg.feishu.cn/file/S3ICbbs7fo5YiMxSus4c9yOnnmb?from=from_copylink" alt="作品展示4" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4">
+                                <h3 class="text-xl font-bold">装箱算法演示</h3>
+                                <p class="text-sm text-gray-300">超越"装满满"软件的算法成果</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://tir6yppgipg.feishu.cn/file/S3ICbbs7fo5YiMxSus4c9yOnnmb?from=from_copylink" alt="作品展示5" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4">
+                                <h3 class="text-xl font-bold">我要赞赞小程序</h3>
+                                <p class="text-sm text-gray-300">Muse平台生态产品</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next text-white"></div>
+                    <div class="swiper-button-prev text-white"></div>
+                </div>
+
+                <div class="mt-8">
+                    <div class="mini-card p-6">
+                        <h3 class="text-2xl font-bold mb-4">Muse产品展示</h3>
+                        <div class="aspect-w-16 aspect-h-9">
+                            <div class="flex items-center justify-center h-64 bg-gray-800 rounded-lg">
+                                <div class="text-center">
+                                    <i class="fas fa-play-circle text-5xl highlight-text mb-3"></i>
+                                    <p class="text-lg font-semibold">Muse视频介绍</p>
+                                    <a href="https://tir6yppgipg.feishu.cn/file/OQi9b5SAqoYuu2x7QITcu2h7nif?from=from_copylink" target="_blank" class="text-sm highlight-text hover:underline mt-1 inline-block">查看演示视频 <i class="fas fa-external-link-alt text-xs"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 项目成果展示 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-chart-line highlight-text mr-2"></i>项目成果</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+                <div class="mini-card p-6">
+                    <h3 class="text-2xl font-bold mb-4">Muse平台营收贡献</h3>
+                    <div class="h-64 relative">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <h3 class="text-2xl font-bold mb-4">技能分布</h3>
+                    <div class="h-64 relative">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 技能与专长 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-tools highlight-text mr-2"></i>技能与专长</h2>
+            
+            <div class="mb-8">
+                <h3 class="text-xl font-bold mb-4">专业技能</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fab fa-python text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">PyTorch</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-eye text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">计算机视觉</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-font text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">OCR</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-brain text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">深度学习</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-robot text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">强化学习</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-cube text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">装箱算法</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-truck text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">智能供应链算法</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-sitemap text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">决策优化算法</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fab fa-git-alt text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">Git</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fab fa-docker text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">Docker</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-ad text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">智能营销</span>
+                    </div>
+                    <div class="mini-card p-4 flex flex-col items-center justify-center">
+                        <i class="fas fa-database text-2xl highlight-text mb-2"></i>
+                        <span class="text-center">大数据传播与监控</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-4">其他能力</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="mini-card p-6">
+                        <i class="fas fa-language text-2xl highlight-text mb-3"></i>
+                        <h4 class="text-lg font-semibold">卓越英语口语能力</h4>
+                        <p class="text-sm text-gray-300">CET6 500+</p>
+                    </div>
+                    
+                    <div class="mini-card p-6">
+                        <i class="fas fa-pen-fancy text-2xl highlight-text mb-3"></i>
+                        <h4 class="text-lg font-semibold">书法艺术</h4>
+                        <p class="text-sm text-gray-300">镇江市书法协会会员</p>
+                    </div>
+                    
+                    <div class="mini-card p-6">
+                        <i class="fas fa-running text-2xl highlight-text mb-3"></i>
+                        <h4 class="text-lg font-semibold">体育特长</h4>
+                        <p class="text-sm text-gray-300">江苏省二级运动员</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 教育背景 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-graduation-cap highlight-text mr-2"></i>教育背景</h2>
+            
+            <div class="mini-card p-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold highlight-text">北京理工大学</h3>
+                        <p class="text-lg mt-1">硕士学位</p>
+                    </div>
+                    <p class="text-gray-400 mt-2 md:mt-0">2019届</p>
+                </div>
+                <p class="text-gray-300 mt-4">信息院 | 导师：傅雄军（现任北京理工大学-集成电路与电子学院副院长）</p>
+            </div>
+        </div>
+        
+        <!-- 社会资源 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-network-wired highlight-text mr-2"></i>社会资源</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                <div class="mini-card p-6">
+                    <i class="fas fa-user-graduate text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-xl font-bold mb-1">学术资源</h3>
+                    <p class="text-sm text-gray-300">通过导师傅雄军（北京理工大学副院长）获得优秀的北上深学生资源、科研及商业资源</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-server text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-xl font-bold mb-1">计算资源</h3>
+                    <p class="text-sm text-gray-300">第四范式、物自体从业期间积累了价格实惠的GPU资源供应商、数据供应商</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-users text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-xl font-bold mb-1">AI行业人脉</h3>
+                    <p class="text-sm text-gray-300">在职业生涯中积累了一批优秀的AI行业人脉，均在AI的各个行业里有不错的发展</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-handshake text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-xl font-bold mb-1">政府资源</h3>
+                    <p class="text-sm text-gray-300">家父从政40年，局级，在合理合法的途径下可以提供帮助</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 管理与沟通能力 -->
+        <div class="main-card p-8 mb-12">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-comments highlight-text mr-2"></i>管理与沟通能力</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <div class="mini-card p-6">
+                    <i class="fas fa-users-cog text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-xl font-bold mb-1">管理经验</h3>
+                    <p class="text-sm text-gray-300">曾担任架构师、算法工程总监，具备团队管理经验</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-comment-dots text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-xl font-bold mb-1">沟通能力</h3>
+                    <p class="text-sm text-gray-300">具备很强的沟通协作和管理能力</p>
+                </div>
+                
+                <div class="mini-card p-6">
+                    <i class="fas fa-cut text-3xl highlight-text mb-3"></i>
+                    <h3 class="text-xl font-bold mb-1">思维方式</h3>
+                    <p class="text-sm text-gray-300">崇尚奥卡姆剃刀原理，追求简洁有效的解决方案</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 联系方式 -->
+        <div class="main-card p-8">
+            <h2 class="section-title text-3xl font-bold mb-6"><i class="fas fa-envelope highlight-text mr-2"></i>联系方式</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                <div class="mini-card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-envelope text-3xl highlight-text mb-3"></i>
+                    <p class="text-center font-semibold">邮箱</p>
+                    <p class="text-sm text-gray-300 text-center mt-1">jetcodery@gmail.com</p>
+                    <p class="text-sm text-gray-300 text-center">123827492@qq.com</p>
+                </div>
+                
+                <div class="mini-card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-phone text-3xl highlight-text mb-3"></i>
+                    <p class="text-center font-semibold">电话</p>
+                    <p class="text-sm text-gray-300 text-center mt-1">18515068708</p>
+                </div>
+                
+                <div class="mini-card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-map-marker-alt text-3xl highlight-text mb-3"></i>
+                    <p class="text-center font-semibold">地址</p>
+                    <p class="text-sm text-gray-300 text-center mt-1">北京市海淀区北京理工大学</p>
+                </div>
+                
+                <div class="mini-card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-birthday-cake text-3xl highlight-text mb-3"></i>
+                    <p class="text-center font-semibold">出生年月</p>
+                    <p class="text-sm text-gray-300 text-center mt-1">1994.10.21</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部版权信息 -->
+        <div class="text-center text-gray-500 text-sm mt-12">
+            <p>© 2024 李嘉稷 | 设计与开发</p>
+        </div>
+    </div>
+    
+    <script>
+        // 滚动动画效果
+        document.addEventListener("DOMContentLoaded", function() {
+            // 设置Intersection Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const mainCardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        mainCardObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            const miniCardObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 50); // 添加交错效果
+                        miniCardObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // 观察所有主卡片
+            document.querySelectorAll('.main-card').forEach(card => {
+                mainCardObserver.observe(card);
+            });
+            
+            // 观察所有迷你卡片
+            document.querySelectorAll('.mini-card').forEach(card => {
+                miniCardObserver.observe(card);
+            });
+            
+            // 创建图表
+            createRevenueChart();
+            createSkillsChart();
+            
+            // 初始化Swiper轮播图
+            const swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                effect: "fade",
+                fadeEffect: {
+                    crossFade: true
+                }
+            });
+        });
+        
+        // 收入贡献图表
+        function createRevenueChart() {
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Muse平台', '其他产品'],
+                    datasets: [{
+                        label: '营收贡献',
+                        data: [60, 40],
+                        backgroundColor: [
+                            'rgba(255, 105, 0, 0.7)',
+                            'rgba(255, 255, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 105, 0, 1)',
+                            'rgba(255, 255, 255, 0.4)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 技能分布图表
+        function createSkillsChart() {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['AI算法', '决策优化', '架构设计', '创意AI', '沟通管理', '英语能力'],
+                    datasets: [{
+                        label: '技能水平',
+                        data: [95, 90, 85, 80, 85, 80],
+                        backgroundColor: 'rgba(255, 105, 0, 0.3)',
+                        borderColor: 'rgba(255, 105, 0, 0.8)',
+                        pointBackgroundColor: 'rgba(255, 105, 0, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(255, 105, 0, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(255, 255, 255, 0.2)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.2)'
+                            },
+                            pointLabels: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)',
+                                backdropColor: 'transparent'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
